@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class Queue {
+    public static void main(String[] args){
+        int N,P,R;
+        long[][][] que = new long[17][17][17];
+        que[1][1][1] = 1;
+        for(N=2;N<=13;N++){
+            for(P=1;P<=N;P++){
+                for(R=1;R<=N;R++){
+                    que[N][P][R] = que[N-1][P-1][R] + que[N-1][P][R]*(N-2) + que[N-1][P][R-1];
+                }
+            }
+        }
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while(t!=0){
+            N = sc.nextInt();
+            P = sc.nextInt();
+            R = sc.nextInt();
+            System.out.println(que[N][P][R]);
+            t = t-1;
+        }
+    }
+}
